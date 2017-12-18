@@ -1,0 +1,64 @@
+body {
+    background-image: url("../images/flat-earth-1.jpg");  
+    background-size: 100%;
+}
+
+.game-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* color: red; */
+}
+
+.title {
+   margin-top: 15px;
+   font-weight: bold;
+   font-size: 75px;
+   color: red;
+}
+
+.sub-title {
+    font-weight: bold;
+}
+
+#remaining {
+    color: red;
+    margin-top: 35px;
+    font-size: 30px;
+    font-weight: bold;
+   
+}
+
+.countdown {
+    color: black;
+    margin-top: 35px;
+    font-size: 30px;
+    font-weight: normal;
+}
+
+.true-false {
+    margin-top: 25px;
+    font-size: 25px;
+    font-weight: bold;
+}
+.questions {
+    margin-top: 8px;
+    font-size: 25px;
+    font-weight: bold;
+
+}
+
+#true {
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+#false {
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+
