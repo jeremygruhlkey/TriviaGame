@@ -5,7 +5,8 @@ $(document).ready(function(){
             question: "The earth is a spinning globe.",
             correct: "false",
             rightText: "Correct! The Earth as globe is myth! It's actually flat!",
-            wrongText: "Wrong, you sheep! It's flat! NASA is lying to you!"
+            wrongText: "Wrong, you sheep! It's flat! NASA is lying to you!",
+            image: src = "assets/images/flat-earth-whatevs.gif"
         },
 
         gravity = {
@@ -31,10 +32,37 @@ $(document).ready(function(){
 
     function makeGuess(){
         currentQuestion = questionSet[arrayPosition].question;
-        console.log(currentQuestion)
         $(".questions").html(currentQuestion);
+        correctAnswer = questionSet[arrayPosition].correct;
+        console.log(currentQuestion);
+        console.log(correctAnswer);
         $(".option").click(function() {
+            var selection = $(this).attr('value');
+            console.log(selection);
+            if (selection === questionSet[arrayPosition].correct){
+                rightAnswer();
+             }
+            else {
+                wrongAnswer();
+            }
 
         });
+
+        function rightAnswer(){
+            $(".option").off("click");
+            rightAnswers = rightAnswers + 1;
+            $(".answer-check").html(questionSet[arrayPosition].rightText);
+            $('#imagesList').append("<img src = " + questionSet[arrayPosition].image + " />");
+            console.log("right answers" + rightAnswers);
+            console.log("wrong answers" + wrongAnswers);
+        }
+
+        function wrongAnswer(){
+            $(".option").off("click");            
+            wrongAnswers = wrongAnswers + 1
+            $(".answer-check").html(questionSet[arrayPosition].wrongText);
+            console.log("right answers" + rightAnswers);
+            console.log("wrong answers" + wrongAnswers);
+        }
     };
 });
