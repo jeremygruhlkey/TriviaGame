@@ -15,7 +15,31 @@ $(document).ready(function(){
             rightText: "Correct! The flat Earth accelerates upward forcing you into it!",
             wrongText: "WRONG!! Gravity is a lie. Earth accelerates upward forcing you into it.",
             image: "assets/images/gravity3.jpg"
-        }
+        },
+
+        turtles = {
+            question: "The disc Earth sits on the backs of two elephants standing on a giant turtle.",
+            correct: "true",
+            rightText: "Totally real and true. What's the turtle standing on? It's turtles all the way down.",
+            wrongText: "You're really disappointing me here. You need to get more of your science from cheap YouTube vids.",
+            image: "assets/images/turtle2.gif"
+        },
+
+        revolves = {
+            question: "The Earth revolves around the sun.",
+            correct: "false",
+            rightText: "Of course it doesn't! Can you imagine? Earth is obviously the center of the universe.",
+            wrongText: "Oh, is that what 'scientists' tell you? Do you FEEL like the earth is moving, genius? ",
+            image: "assets/images/revolve2.gif"
+        },
+
+        spinning = {
+            question: "The Earth is stationary and unmoving.",
+            correct: "true",
+            rightText: "Absollutely! Can you believe some people believe we are spinning at unimaginable speeds!?",
+            wrongText: "Spinning? No. Impossible. So what holds the oceans on the planet?? Oh, I see. 'Gravity,' again.",
+            image: "assets/images/spinning.gif"
+        } 
         
     ];
 
@@ -61,7 +85,7 @@ $(document).ready(function(){
             console.log("right answers " + rightAnswers);
             console.log("wrong answers " + wrongAnswers);
             console.log("new array position " + arrayPosition);
-            setTimeout(makeGuess, 4000);
+            setTimeout(makeGuess, 5000);
         }
 
         function wrongAnswer(){
@@ -73,7 +97,7 @@ $(document).ready(function(){
             console.log("right answers " + rightAnswers);
             console.log("wrong answers " + wrongAnswers);
             console.log("new array position is " + arrayPosition);
-            setTimeout(makeGuess, 4000);
+            setTimeout(makeGuess, 5000);
         }
     };
 });
