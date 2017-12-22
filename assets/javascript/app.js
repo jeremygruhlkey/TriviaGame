@@ -79,7 +79,7 @@ $(document).ready(function(){
         $(".start").addClass("hide");
         $(".box").addClass("unhide");
         makeGuess();
-        // startCount();
+        
 
     });
 
@@ -96,13 +96,12 @@ $(document).ready(function(){
         currentQuestion = questionSet[arrayPosition].question;
         $(".questions").html(currentQuestion);
         correctAnswer = questionSet[arrayPosition].correct;
-        console.log("the question is " + currentQuestion);
-        console.log("the correct answer is " + correctAnswer);
+        
         
         $(".option").click(function() {
             
             var selection = $(this).attr("value");
-            console.log("player chose " + selection);
+            
             if (selection === questionSet[arrayPosition].correct){
                 $(this).addClass("right");
                 rightAnswer();
@@ -123,9 +122,6 @@ $(document).ready(function(){
             $(".answer-check").html(questionSet[arrayPosition].rightText);
             $('.answer-image').append("<img src = " + questionSet[arrayPosition].image + " />");
             arrayPosition = arrayPosition + 1;
-            console.log("right answers " + rightAnswers);
-            console.log("wrong answers " + wrongAnswers);
-            console.log("new array position " + arrayPosition);
                 
                 if (wrongAnswers + rightAnswers === 5){
                     setTimeout(gameEnd, 5000);
@@ -142,14 +138,11 @@ $(document).ready(function(){
             $(".answer-check").html(questionSet[arrayPosition].wrongText);
             $('.answer-image').append("<img src = " + questionSet[arrayPosition].image + " />");
             arrayPosition = arrayPosition + 1;
-            console.log("right answers " + rightAnswers);
-            console.log("wrong answers " + wrongAnswers);
-            console.log("new array position is " + arrayPosition);
+            
                 if (wrongAnswers + rightAnswers === 5){
                     setTimeout(gameEnd, 5000);
                 }
-                else {setTimeout(makeGuess, 5000);}
-                
+                else {setTimeout(makeGuess, 5000);}  
         }
 
     };
@@ -165,8 +158,6 @@ $(document).ready(function(){
                 setTimeout(gameEnd, 5000);
             }
             else {setTimeout(makeGuess, 5000);}
-        // timeRemaining = 10;
-        // startCount();
     }
 
     function gameEnd() {
