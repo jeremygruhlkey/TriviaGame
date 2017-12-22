@@ -20,7 +20,7 @@ $(document).ready(function(){
         turtles = {
             question: "The disc Earth sits on the backs of two elephants standing on a giant turtle.",
             correct: "true",
-            rightText: "Totally real and true. What's the turtle standing on? It's turtles all the way down.",
+            rightText: "Totally real and true. What's the turtle standing on? It's turtles all the way down, man!",
             wrongText: "You're really disappointing me here. You need to get more of your science from cheap YouTube vids.",
             image: "assets/images/turtle2.gif"
         },
@@ -36,7 +36,7 @@ $(document).ready(function(){
         spinning = {
             question: "The Earth is stationary and unmoving.",
             correct: "true",
-            rightText: "Absollutely! Can you believe some people believe we are spinning at unimaginable speeds!?",
+            rightText: "Absolutely! Can you believe some people believe we are spinning at unimaginable speeds!?",
             wrongText: "Spinning? No. Impossible. So what holds the oceans on the planet?? Oh, I see. 'Gravity,' again.",
             image: "assets/images/spinning.gif",
         },
@@ -55,6 +55,12 @@ $(document).ready(function(){
     var timeRemaining = 10;
     var secondInterval;
 
+    var no = new Audio ("http://www.pacdv.com/sounds/voices/no-6.wav");
+    var yes = new Audio ("http://www.pacdv.com/sounds/voices/yes-4.wav");
+    var focus = new Audio ("http://www.pacdv.com/sounds/voices/focus.wav");
+    var laugh = new Audio ("http://www.pacdv.com/sounds/people_sound_effects/laugh_2.wav");
+    var cheer = new Audio ("http://www.pacdv.com/sounds/applause-sounds/app-30.wav");
+
     function startCount() {
         secondInterval = setInterval(countdown, 1000);
     }
@@ -69,8 +75,9 @@ $(document).ready(function(){
     }
 
     $(".start").click(function() { 
+        focus.play();
         $(".start").addClass("hide");
-        $(".game-box").addClass("unhide");
+        $(".box").addClass("unhide");
         makeGuess();
         // startCount();
 
@@ -80,7 +87,10 @@ $(document).ready(function(){
         if (wrongAnswers + rightAnswers === 5){
             gameEnd();
         }
+        
         startCount();
+        $(".option").removeClass("wrong");
+        $(".option").removeClass("right");
         $(".answer-check").empty();
         $(".answer-image").empty();
         currentQuestion = questionSet[arrayPosition].question;
@@ -90,12 +100,15 @@ $(document).ready(function(){
         console.log("the correct answer is " + correctAnswer);
         
         $(".option").click(function() {
-            var selection = $(this).attr('value');
+            
+            var selection = $(this).attr("value");
             console.log("player chose " + selection);
             if (selection === questionSet[arrayPosition].correct){
+                $(this).addClass("right");
                 rightAnswer();
              }
             else {
+                $(this).addClass("wrong");
                 wrongAnswer();
             }
 
@@ -104,6 +117,7 @@ $(document).ready(function(){
         function rightAnswer(){
             $(".option").off("click");
             clearInterval(secondInterval);
+            yes.play();
             timeRemaining = 10;  
             rightAnswers = rightAnswers + 1;
             $(".answer-check").html(questionSet[arrayPosition].rightText);
@@ -112,6 +126,7 @@ $(document).ready(function(){
             console.log("right answers " + rightAnswers);
             console.log("wrong answers " + wrongAnswers);
             console.log("new array position " + arrayPosition);
+                
                 if (wrongAnswers + rightAnswers === 5){
                     setTimeout(gameEnd, 5000);
                 }
@@ -120,7 +135,8 @@ $(document).ready(function(){
 
         function wrongAnswer(){
             $(".option").off("click");  
-            clearInterval(secondInterval);     
+            clearInterval(secondInterval);    
+            no.play(); 
             timeRemaining = 10;     
             wrongAnswers = wrongAnswers + 1
             $(".answer-check").html(questionSet[arrayPosition].wrongText);
@@ -158,8 +174,17 @@ $(document).ready(function(){
         timeRemaining = 10
         $(".answer-check").empty();
         $(".answer-image").empty();
+        $(".option").removeClass("wrong");
+        $(".option").removeClass("right");
         $(".questions").html("Game over! you got " + rightAnswers + " right answers & " + wrongAnswers + " wrong answers.");
         $('.answer-image').append("<img src = " + questionSet[5].image + " />");
-        setTimeout(makeGuess, 10000);
+            
+        setTimeout(reset, 7000);
+    }
+
+    function reset() {
+        rightAnswers = 0;
+        wrongAnswers = 0;
+        makeGuess();
     }
 });

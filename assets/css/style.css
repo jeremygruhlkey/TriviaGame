@@ -3,13 +3,19 @@ body {
     background-size: 100%;
 }
 
+.button-box {
+    display: flex;
+    justify-content: center;
+    
+    
+}
 .start {
+    margin-top: 75px;
     height: 40px;
-    width: 100px;
-    /* display: flex;
-    flex-direction: row;
-    justify-content: center; */
-    /* align-items: center; */
+    width: 200px;
+    background-color: green;
+    font-size: 20px;
+    font-weight: bold;
    
 }
 
@@ -17,7 +23,7 @@ body {
     display: none;
     
 }
-.game-box {
+.box {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -97,3 +103,10 @@ body {
    
 }
 
+.wrong {
+    background-color: red;
+}
+
+.right {
+    background-color: green;
+}
